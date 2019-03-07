@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title></ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div class="basicContainer">
+        <mat-card>
+            <div style="display:flex; justify-content: center;margin: 1rem">
+                <h1>Entscheidungsbäume</h1>
+            </div>
+            <div style="display:flex; justify-content: center;margin: 1rem">
+                <div style="display:flex; justify-content: center;margin: 1rem">
+                    <b>Entscheidungsbaum: </b>
+                    <mat-select>
+                        <mat-option *ngFor="let tree of trees" [value]="tree.treeid" (click)="openTree(tree)">
+                            {{tree.caption}}
+                        </mat-option>
+                    </mat-select>
+
+                </div>
+
+
+                <!--<mat-list *ngFor="let tree of trees" >
+                        <button mat-button [value]="tree.treeid"  (click)="openTree(tree)">{{tree.caption}}</button>
+                </mat-list>-->
+
+            </div>
+
+        </mat-card>
+    </div>
+
+</ion-content>

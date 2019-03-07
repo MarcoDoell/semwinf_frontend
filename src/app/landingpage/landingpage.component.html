@@ -1,0 +1,22 @@
+<!--<ion-header no-border padding>
+    <ion-title center>Entscheidungsbaum Auswahl</ion-title>
+</ion-header>-->
+<ion-content padding>
+    <div class="basicContainer">
+        <div>
+
+            <mat-card>
+                <mat-card-title center>Willkommen zum Decision Support System</mat-card-title>
+                <div style="display:flex;flex-direction:column;justify-content:center;">
+                    <div style="display:flex; justify-content: center; margin: 1rem">
+                        <button mat-raised-button color="primary" style="width:80%" [navPush]="Treeoverview"> Entscheidungsbaum öffnen</button>
+                    </div>
+
+                    <div style="display:flex; justify-content: center; margin: 1rem">
+                        <button mat-raised-button color="primary" style="width:80%" [navPush]="CreateShowTree"> Neuer Entscheidungsbaum</button>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</ion-content>

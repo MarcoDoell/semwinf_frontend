@@ -1,0 +1,56 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<ion-header>
+  <ion-navbar>
+    <ion-title>Frage zu Entscheidungsbaum: {{tree.caption}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="basicContainer">
+
+    <div *ngIf="otherResults" style="display:flex; margin-right:4rem">
+        <mat-card>
+          <mat-list>
+            <h1 mat-subheader>Ergebnisse</h1>
+            <mat-list-item *ngFor="let item of otherResults">
+                <div>
+                {{item.result}}
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+      </div>
+
+    <div *ngIf="otherSteps" style="display:flex; margin-right:4rem">
+      <mat-card>
+        <mat-list>
+          <h1 mat-subheader>Fragen</h1>
+          <mat-list-item *ngFor="let item of otherSteps" (click)="navigateToItem(item)">
+            <!--<div [class.special]="isSelected(item)">-->
+              <div>
+              {{item.caption}}
+            </div>
+          </mat-list-item>
+          <mat-list-item (click)="navigateToItem(newStepitem)">
+            <button mat-raised-button color="primary">Neue Frage</button>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+
+
+    <div style="display:flex; justify-content: flex-end;">
+      <mat-card>
+        <mat-slide-toggle (change)="ergebnisAnzeigen()">Ergebnis</mat-slide-toggle>
+        
+        <div *ngIf="!ergebnisWirdAngezeigtFrageNicht">
+          <app-createnewstep [stepId]="currentStepId" (savedStep)="onSavedNewQuestion($event)"></app-createnewstep>
+        </div>
+
+        <div *ngIf="ergebnisWirdAngezeigtFrageNicht">
+          <app-create-new-result (savedStep)="onSavedNewResult($event)"></app-create-new-result>
+        </div>
+        
+      </mat-card>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,18 @@
+<div>
+    <mat-card>
+        <mat-form-field>
+            <textarea matInput placeholder="Ergebnis" [(ngModel)]="ergebnis"></textarea>
+        </mat-form-field>
+        <!--<div>
+            <button mat-raised-button color="primary" [disabled]="discardIsDisabled" (click)="discardResult()">Ergebnis
+                verwerfen</button>
+            <button mat-raised-button color="primary" [disabled]="saveResultIsDisabled" (click)="saveResult()">Ergebnis
+                speichern</button>
+            <button mat-raised-button color="primary" [disabled]="saveTreeIsDisabled" (click)="saveTree()">Baum
+                speichern</button>
+        </div>-->
+        <div>
+            <button mat-raised-button color="primary" (click)="saveResult()">Ergebnis speichern</button>
+        </div>
+    </mat-card>
+</div>

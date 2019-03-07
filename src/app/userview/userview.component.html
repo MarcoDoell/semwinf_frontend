@@ -1,0 +1,59 @@
+<ion-header>
+                <ion-navbar>
+                    <ion-title></ion-title>
+                </ion-navbar>
+            </ion-header>
+<ion-content padding>
+        <div class="basicContainer">
+                <div>
+                        <div>
+                                <mat-card>
+                                        <div style="display:flex; justify-content: center;margin: 1rem">
+                                                <h1>Entscheidungsbaumtitel: {{tree.caption}}</h1>
+                                        </div>
+                                </mat-card>
+                        </div>
+                        <div>
+                                <mat-card>
+                                        <div style="display:flex; justify-content: center;margin: 1rem">
+                                                <h2>{{step.question}}</h2>
+                                        </div>
+                                </mat-card>
+
+                        </div>
+                        <div *ngIf="step.type==='DROPDOWN'">
+                                <mat-card>
+                                        <div 
+                                                style="display:flex; justify-content: center;margin: 1rem">
+
+                                                <b>Antworten: </b>
+                                                <mat-select>
+                                                        <mat-option *ngFor="let answer of step.answers" [value]="answer"
+                                                                (click)="answerChosen(answer)">
+                                                                {{answer.answer}}
+                                                        </mat-option>
+                                                </mat-select>
+
+                                        </div>
+                                </mat-card>
+                        </div>
+                        <div *ngIf="step.type==='RADIO'">
+                                <mat-card>
+                                        <div 
+                                                style="display:flex; justify-content: center;margin: 1rem">
+                                                <!--Dann Radio Button -->
+
+                                                <mat-radio-group>
+                                                        <mat-radio-button *ngFor="let answer of step.answers"
+                                                                [value]="answer" (click)="answerChosen(answer)">
+                                                                {{answer.answer}}
+                                                        </mat-radio-button>
+                                                </mat-radio-group>
+
+                                        </div>
+                                </mat-card>
+                        </div>
+
+                </div>
+        </div>
+</ion-content>

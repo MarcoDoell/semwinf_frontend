@@ -1,0 +1,63 @@
+<div>
+    <mat-card>
+        <div style="display:flex; justify-content: flex-start;">
+            <mat-form-field>
+                <input matInput placeholder="Frage" [(ngModel)]="this.step.question" name="frage" (keyup)="enableAddButton()">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Caption" [(ngModel)]="this.step.caption" name="mycaption" (keyup)="enableAddButton()">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Inputmöglichkeit" [value]="this.step.type" #gewaehlterInput name="gewaehlterInput" (selectionChange)="setInput($event)">
+                    <mat-option *ngFor="let input of inputs" [value]="input">
+                        {{input}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <mat-form-field>
+            <input matInput placeholder="Answer" #myAnswer name="myAnswer" [(ngModel)]="placeHolderAntwortInput" (keyup)="enableAddButton()">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addAnswer(myAnswer.value)">Antwort hinzufügen</button>
+        <div class="AnswersWithButtonsForNextQuestion">
+            <mat-card *ngFor="let answer of step.answers">
+                <mat-card-content>
+                    Antwort: {{answer.answer}}
+                </mat-card-content>
+                <div style="display:flex; flex-direction:row; justify-content: center; align-items: center;">
+                    <span style="margin-right:3rem;">Folgefrage: </span>
+                    <mat-select [placeholder]="answer.placeholderstep" name="gewaehlte Frage">
+                    
+                        <mat-option *ngFor="let step of otherSteps" [value]="step.stepid" (click)="addQuestionToAnswer(step,answer)">
+                            {{step.caption}}
+                        </mat-option>
+                    </mat-select>
+
+                    <span style="margin-right:3rem;">Ergebnis: </span>
+                    <mat-select [placeholder]="answer.placeholderresult">
+                        <mat-option *ngFor="let result of otherResults" [value]="result.resultid" (click)="addResultToAnswer(result,answer)">
+                            {{result.result}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </mat-card>
+        </div>
+        <div style="display:flex; justify-content: flex-end;">
+            <div style="margin-right:2rem; margin-top:2rem;">
+                <button mat-raised-button color="warn" (click)="discardQuestion()"
+                    style="float: right;">Frage verwerfen
+                </button>
+            </div>
+            <div style="margin-right:2rem; margin-top:2rem;">
+                <button mat-raised-button color="primary" (click)="createNewQuestion('')"
+                    style="float: left;">Frage Speichern</button>
+            </div>
+            <div style="margin-right:2rem; margin-top:2rem;">
+                <button mat-raised-button color="primary" (click)="finishTree()"
+                    style="float: right;">Baum
+                    Speichern</button>
+            </div>
+        </div>
+
+    </mat-card>
+</div>

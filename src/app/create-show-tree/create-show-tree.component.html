@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Entscheidungsbaum Titel</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="basicContainer">
+    <div>
+      <mat-card>
+        <div style="display:flex;flex-direction:column;justify-content:center;width:100%">
+          <mat-form-field style="display:flex; justify-content: flex-start; width:100%">
+            <input matInput style="width:100%" placeholder="Caption" [(ngModel)]="this.treeVm.caption" (keyup)="enableMatButton()"
+              required minlength="1" name="mycaption">
+          </mat-form-field>
+          <button mat-raised-button style="width:100%" color="primary" [disabled]="isDisabled" (click)="createTree()">
+            Entscheidungsbaum
+            erstellen
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</ion-content>

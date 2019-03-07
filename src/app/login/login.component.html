@@ -1,0 +1,24 @@
+<ion-content padding>
+    <div class="basicContainer">
+        <div>
+            <mat-card>
+                <div class="username" style="display:flex; justify-content: center;margin: 1rem">
+                    <mat-form-field style="display:flex; justify-content: center; width:100%;margin: 1rem">
+                        <input matInput placeholder="Username">
+                    </mat-form-field>
+                </div>
+                <div class="password" style="display:flex; justify-content: center;margin: 1rem">
+                    <mat-form-field style="display:flex; justify-content: center; width:100%;margin: 1rem">
+                        <input matInput type="password" placeholder="Password">
+                   </mat-form-field>
+                </div>
+                <div class="buttons" style="display:flex; justify-content: flex-start;margin: 1rem">
+                    <button style="margin: 1rem" mat-raised-button color="primary" (click)="login()">Login</button>
+                    <button style="margin: 1rem"  mat-raised-button color="primary">Register</button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</ion-content>
+
+
